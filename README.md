@@ -8,7 +8,7 @@ The idea here is that a software engineer for SaaS apps typically acquires some 
 * JSON, HTML, etc.
 * Some programming language.
 
-And for deployment:
+And for deployment, possibly:
 
 * Containerization (Docker)
 * Kubernetes, Helm Charts, and YAML
