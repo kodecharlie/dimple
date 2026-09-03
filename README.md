@@ -27,3 +27,26 @@ In short, the idea here is that service authors would return to the art of progr
 
 ## Rhai interpreter
 Just as Tcl/Tk was embedded in C/C++ applications, the Rhai interpreter is embedded in the `dimple` app server.  All that happens for now is that any Rhai scripts archived under `scripts` are ingested by `dimple` and dynamically augment `dimple` with additional HTTP services.  Of course, with any real app server, there would be a huge number of additional problems -- dealing with security, accessing data resources, etc.  In truth, others have thought through these challenges and the current service paradigm likely is not going to shift much.
+
+# Run it
+To execute `dimple`, from your terminal CLI, simply run:
+```
+cargo run
+```
+Then from a different terminal shell, run this `curl` command:
+```
+curl -XPOST -H "Content-Type: application/json" -H "Accept: application/json" --data "@examples/weather-req.json" "http://127.0.0.1:3000/api/get-weather" | jq .
+```
+where I have assumed you have `jq` installed.
+
+You should see something like this in the response:
+```
+[
+  {
+    "barometer": 1013.25,
+    "heat_index": 22,
+    "precipitation_chance": 0,
+    "temperature": 22
+  }
+]
+```
